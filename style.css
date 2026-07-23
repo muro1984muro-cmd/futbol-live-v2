@@ -327,3 +327,39 @@ button:active{
 ::-webkit-scrollbar-thumb:hover{
     background:#16a34a;
 }
+/* =========================
+   MOBİL UYUMLULUK
+========================= */
+
+@media(max-width:768px){
+
+.topbar{
+    flex-direction:column;
+    gap:15px;
+}
+
+.brand h1{
+    font-size:22px;
+}
+
+nav{
+    font-size:14px;
+}
+
+.card{
+    padding:15px;
+}
+
+.match h3{
+    font-size:17px;
+}
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+table{
+    font-size:14px;
+}
+
+}
