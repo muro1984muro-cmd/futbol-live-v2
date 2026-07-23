@@ -57,9 +57,70 @@ await res.json();
 
 alan.innerHTML="";
 
-if(!data.response ||
-data.response.length===0){
+alan.innerHTML = `
 
+<div class="match-card">
+
+<div class="league">
+🏆 UEFA Avrupa Ligi
+</div>
+
+<div class="live-time">
+📅 Yaklaşan Maç
+</div>
+
+<div class="teams">
+
+<div class="team">
+
+<img src="https://media.api-sports.io/football/teams/549.png"
+class="team-logo">
+
+<span>
+Beşiktaş
+</span>
+
+</div>
+
+
+<div class="score">
+
+VS
+
+</div>
+
+
+<div class="team">
+
+<span>
+FC Midtjylland
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="country">
+
+🇹🇷 Türkiye - 🇩🇰 Danimarka
+
+</div>
+
+
+<div>
+
+🕒 21:00
+
+</div>
+
+
+</div>
+
+`;
+
+return;
 alan.innerHTML=`
 
 <div class="match">
