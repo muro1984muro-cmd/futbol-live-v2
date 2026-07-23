@@ -80,6 +80,9 @@ return;
 
 data.response.forEach(mac=>{
 
+    
+golKontrol(mac);
+    
 const skor=
 `${mac.goals.home ?? 0}-${mac.goals.away ?? 0}`;
 
@@ -316,5 +319,71 @@ Puan durumu yüklenemedi.
 `;
 
 }
+
+}
+// ===================================
+// BİLDİRİM SİSTEMİ
+// ===================================
+
+function bildirimHazirla(){
+
+const buton =
+document.getElementById("bildirimAc");
+
+if(!buton) return;
+
+buton.onclick = async()=>{
+
+const izin =
+await Notification.requestPermission();
+
+if(izin==="granted"){
+
+new Notification("⚽ Futbol Live",{
+
+body:"Bildirimler başarıyla açıldı.",
+
+icon:"logo.png"
+
+});
+
+}else{
+
+alert("Bildirim izni verilmedi.");
+
+}
+
+};
+
+}
+// ===================================
+// GOL KONTROLÜ
+// ===================================
+
+function golKontrol(mac){
+
+const id = mac.fixture.id;
+
+const skor =
+`${mac.goals.home ?? 0}-${mac.goals.away ?? 0}`;
+
+if(
+eskiSkorlar[id] &&
+eskiSkorlar[id] !== skor &&
+Notification.permission==="granted"
+){
+
+new Notification("🥅 GOL!",{
+
+body:
+`${mac.teams.home.name} ${skor} ${mac.teams.away.name}`,
+
+icon:"logo.png"
+
+});
+
+}
+
+eskiSkorlar[id]=skor;
 
 }
