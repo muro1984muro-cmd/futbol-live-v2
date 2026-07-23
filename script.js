@@ -259,7 +259,14 @@ ${mac.teams.away.name}
 
 <p>
 
-🕒 ${mac.time}
+🕒 ${
+new Date(mac.fixture.date)
+.toLocaleTimeString("tr-TR",
+{
+hour:"2-digit",
+minute:"2-digit"
+})
+}
 
 </p>
 
