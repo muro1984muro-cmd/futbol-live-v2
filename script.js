@@ -245,7 +245,41 @@ data.response.forEach(mac=>{
 
 alan.innerHTML +=`
 
-<div class="match">
+<div class="match-card">
+
+<div class="league">
+
+🏆 ${mac.league.name}
+
+</div>
+
+
+<h3>
+
+${mac.teams.home.name}
+
+🆚
+
+${mac.teams.away.name}
+
+</h3>
+
+
+<p>
+
+🕒 ${
+new Date(mac.fixture.date)
+.toLocaleTimeString("tr-TR",
+{
+hour:"2-digit",
+minute:"2-digit"
+})
+}
+
+</p>
+
+
+</div>
 
 <h3>
 
