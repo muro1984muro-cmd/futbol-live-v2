@@ -86,10 +86,11 @@ golKontrol(mac);
 const skor=
 `${mac.goals.home ?? 0}-${mac.goals.away ?? 0}`;
 
-const dakika=
-mac.fixture.status.elapsed
-? mac.fixture.status.elapsed+"'"
-: "CANLI";
+const dakika =
+mac.fixture.status.short === "1H" ||
+mac.fixture.status.short === "2H"
+? mac.fixture.status.elapsed + "'"
+: mac.fixture.status.short;
 
 alan.innerHTML += `
 
