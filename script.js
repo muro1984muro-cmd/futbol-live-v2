@@ -14,6 +14,8 @@ window.onload = () => {
 
     bugunkuMaclar();
 
+    yaklasanMaclar();
+
     puanDurumu();
 
     haberler();
@@ -520,5 +522,115 @@ Haberler alınamadı.
 `;
 
 }
+
+}
+// ===================================
+// YAKLAŞAN MAÇLAR
+// ===================================
+
+async function yaklasanMaclar(){
+
+const alan =
+document.getElementById("upcomingMatches");
+
+if(!alan) return;
+
+
+alan.innerHTML =
+"<div class='loading'>Yaklaşan maçlar yükleniyor...</div>";
+
+
+try{
+
+const res = await fetch(
+`${WORKER_URL}?endpoint=upcoming`
+);
+
+
+const data = await res.json();
+
+
+alan.innerHTML="";
+
+
+if(!data.response || data.response.length===0){
+
+alan.innerHTML = `
+
+<div class="match-card">
+
+📅 Yaklaşan maç bulunamadı.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+data.response.slice(0,10).forEach(mac=>{
+
+
+alan.innerHTML += `
+
+<div class="match-card">
+
+
+<div class="league">
+
+🏆 ${mac.league.name}
+
+</div>
+
+
+<h3>
+
+${mac.teams.home.name}
+
+🆚
+
+${mac.teams.away.name}
+
+</h3>
+
+
+<p>
+
+⏰ ${
+new Date(mac.fixture.date)
+.toLocaleString("tr-TR")
+
+}
+
+</p>
+
+
+</div>
+
+`;
+
+
+});
+
+
+}catch(error){
+
+console.log(error);
+
+
+alan.innerHTML = `
+
+<div class="match-card">
+
+❌ Yaklaşan maçlar alınamadı.
+
+</div>
+
+`;
+
+}
+
 
 }
