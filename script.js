@@ -91,36 +91,93 @@ mac.fixture.status.elapsed
 ? mac.fixture.status.elapsed+"'"
 : "CANLI";
 
-alan.innerHTML+=`
+alan.innerHTML += `
 
-<div class="match">
+<div class="match-card">
 
-<span class="live">
 
-🔴 ${dakika}
+<div class="league">
 
-</span>
+🏆 ${mac.league.name}
 
-<h3>
+</div>
+
+
+<div class="live-time">
+
+🔴 CANLI ${dakika}
+
+</div>
+
+
+
+<div class="teams">
+
+
+<div class="team">
+
+
+<img src="${mac.teams.home.logo}" 
+class="team-logo">
+
+
+<span>
 
 ${mac.teams.home.name}
 
-🆚
+</span>
+
+
+</div>
+
+
+
+
+<div class="score">
+
+${mac.goals.home ?? 0}
+
+-
+
+${mac.goals.away ?? 0}
+
+</div>
+
+
+
+
+<div class="team">
+
+
+<img src="${mac.teams.away.logo}" 
+class="team-logo">
+
+
+<span>
 
 ${mac.teams.away.name}
 
-</h3>
+</span>
 
-<p>
 
-⚽ ${skor}
+</div>
 
-</p>
+
+
+</div>
+
+
+
+<div class="country">
+
+🌍 ${mac.league.country}
+
+</div>
+
 
 </div>
 
 `;
-
 });
 
 }catch{
