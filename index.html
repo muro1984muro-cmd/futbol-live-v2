@@ -72,3 +72,113 @@ Canlı maçlar yükleniyor...
 </div>
 
 </section>
+<!-- Bugünkü Maçlar -->
+
+<section class="card">
+
+<h2>📅 Bugünkü Maçlar</h2>
+
+<div id="todayMatches">
+
+<div class="loading">
+
+Bugünkü maçlar yükleniyor...
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Puan Durumu -->
+
+<section class="card">
+
+<h2>🏆 Süper Lig Puan Durumu</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Takım</th>
+
+<th>P</th>
+
+</tr>
+
+</thead>
+
+<tbody id="puan">
+
+<tr>
+
+<td colspan="3">
+
+Yükleniyor...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- Haberler -->
+
+<section class="card">
+
+<h2>📰 Futbol Haberleri</h2>
+
+<div id="news">
+
+<div class="news">
+
+Haberler yükleniyor...
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>© 2026 Futbol Live</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+setTimeout(() => {
+
+const splash = document.getElementById("splash");
+
+if(splash){
+
+splash.style.display = "none";
+
+}
+
+},2000);
+
+if("serviceWorker" in navigator){
+
+navigator.serviceWorker.register("service-worker.js");
+
+}
+
+</script>
+
+</body>
+</html>
