@@ -212,3 +212,85 @@ async function bugunkuMaclar(){
     }
 
 }
+// ======================================
+// PUAN DURUMU
+// ======================================
+
+async function puanDurumu(){
+
+    const tablo =
+    document.getElementById("puan");
+
+    if(!tablo) return;
+
+    tablo.innerHTML=`
+
+    <tr>
+
+    <td colspan="3">
+
+    Yükleniyor...
+
+    </td>
+
+    </tr>
+
+    `;
+
+    try{
+
+        const res =
+        await fetch(
+        `${WORKER_URL}?endpoint=standings`
+        );
+
+        const data =
+        await res.json();
+
+        tablo.innerHTML="";
+
+        if(!data.response){
+
+            return;
+
+        }
+
+        data.response.forEach((takim,index)=>{
+
+            tablo.innerHTML +=`
+
+            <tr>
+
+            <td>${index+1}</td>
+
+            <td>${takim.name}</td>
+
+            <td>${takim.points}</td>
+
+            </tr>
+
+            `;
+
+        });
+
+    }
+
+    catch{
+
+        tablo.innerHTML=`
+
+        <tr>
+
+        <td colspan="3">
+
+        Veri alınamadı.
+
+        </td>
+
+        </tr>
+
+        `;
+
+    }
+
+}
