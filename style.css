@@ -470,3 +470,53 @@ color:#aaa;
 font-size:14px;
 
 }
+.match-card{
+    background:#1c1c1c;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.league{
+    color:#22c55e;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.live-time{
+    background:red;
+    padding:6px 12px;
+    border-radius:20px;
+    display:inline-block;
+    margin-bottom:15px;
+}
+
+.teams{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+}
+
+.team{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.team-logo{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+.score{
+    font-size:30px;
+    font-weight:bold;
+}
+
+.country{
+    margin-top:10px;
+    color:#aaa;
+}
