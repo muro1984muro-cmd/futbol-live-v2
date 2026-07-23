@@ -387,3 +387,83 @@ icon:"logo.png"
 eskiSkorlar[id]=skor;
 
 }
+// ===================================
+// HABERLER
+// ===================================
+
+async function haberler(){
+
+const alan =
+document.getElementById("news");
+
+if(!alan) return;
+
+alan.innerHTML = `
+
+<div class="news">
+
+📰 Haberler yükleniyor...
+
+</div>
+
+`;
+
+try{
+
+const res =
+await fetch(
+`${WORKER_URL}?endpoint=news`
+);
+
+const data =
+await res.json();
+
+alan.innerHTML = "";
+
+if(!data.response || data.response.length===0){
+
+alan.innerHTML = `
+
+<div class="news">
+
+Henüz haber bulunamadı.
+
+</div>
+
+`;
+
+return;
+
+}
+
+data.response.forEach(haber=>{
+
+alan.innerHTML += `
+
+<div class="news">
+
+<h3>${haber.title}</h3>
+
+<p>${haber.description}</p>
+
+</div>
+
+`;
+
+});
+
+}catch{
+
+alan.innerHTML = `
+
+<div class="news">
+
+Haberler alınamadı.
+
+</div>
+
+`;
+
+}
+
+}
