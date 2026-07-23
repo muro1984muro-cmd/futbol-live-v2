@@ -37,25 +37,29 @@ setInterval(() => {
 
 async function canliMaclar(){
 
-const alan =
-document.getElementById("liveMatches");
+const alan = document.getElementById("liveMatches");
 
 if(!alan) return;
 
-alan.innerHTML=
+
+alan.innerHTML =
 "<div class='loading'>Canlı maçlar yükleniyor...</div>";
+
 
 try{
 
-const res =
-await fetch(
+const res = await fetch(
 `${WORKER_URL}?endpoint=fixtures`
 );
 
-const data =
-await res.json();
+
+const data = await res.json();
+
 
 alan.innerHTML="";
+
+
+// TEST BEŞİKTAŞ MAÇI
 
 alan.innerHTML = `
 
@@ -65,11 +69,14 @@ alan.innerHTML = `
 🏆 UEFA Avrupa Ligi
 </div>
 
+
 <div class="live-time">
 📅 Yaklaşan Maç
 </div>
 
+
 <div class="teams">
+
 
 <div class="team">
 
@@ -83,11 +90,11 @@ Beşiktaş
 </div>
 
 
+
 <div class="score">
-
 VS
-
 </div>
+
 
 
 <div class="team">
@@ -110,9 +117,7 @@ FC Midtjylland
 
 
 <div>
-
 🕒 21:00
-
 </div>
 
 
@@ -120,143 +125,12 @@ FC Midtjylland
 
 `;
 
-return;
-alan.innerHTML=`
 
-<div class="match">
+}catch(error){
 
-<h3>
+alan.innerHTML =
 
-📺 Şu anda canlı maç yok.
-
-</h3>
-
-</div>
-
-`;
-
-return;
-
-}
-
-data.response.forEach(mac=>{
-
-    
-golKontrol(mac);
-    
-const skor=
-`${mac.goals.home ?? 0}-${mac.goals.away ?? 0}`;
-
-const dakika =
-mac.fixture.status.short === "1H" ||
-mac.fixture.status.short === "2H"
-? mac.fixture.status.elapsed + "'"
-: mac.fixture.status.short;
-
-alan.innerHTML += `
-
-<div class="match-card">
-
-
-<div class="league">
-
-🏆 ${mac.league.name}
-
-</div>
-
-
-<div class="live-time">
-
-🔴 CANLI ${dakika}
-
-</div>
-
-
-
-<div class="teams">
-
-
-<div class="team">
-
-
-<img src="${mac.teams.home.logo}" 
-class="team-logo">
-
-
-<span>
-
-${mac.teams.home.name}
-
-</span>
-
-
-</div>
-
-
-
-
-<div class="score">
-
-${mac.goals.home ?? 0}
-
--
-
-${mac.goals.away ?? 0}
-
-</div>
-
-
-
-
-<div class="team">
-
-
-<img src="${mac.teams.away.logo}" 
-class="team-logo">
-
-
-<span>
-
-${mac.teams.away.name}
-
-</span>
-
-
-</div>
-
-
-
-</div>
-
-
-
-<div class="country">
-
-🌍 ${mac.league.country}
-
-</div>
-
-
-</div>
-
-`;
-});
-
-}catch{
-
-alan.innerHTML=`
-
-<div class="match">
-
-<h3>
-
-❌ Veriler alınamadı.
-
-</h3>
-
-</div>
-
-`;
+"<div class='match'>❌ Veriler alınamadı.</div>";
 
 }
 
