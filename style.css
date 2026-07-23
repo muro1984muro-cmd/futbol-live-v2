@@ -254,3 +254,76 @@ footer{
     padding:25px;
     color:#94a3b8;
 }
+/* =========================
+   İSTATİSTİK KARTLARI
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:20px;
+}
+
+.stat-card{
+    background:#111827;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    border:1px solid #334155;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:scale(1.05);
+    border-color:#22c55e;
+}
+
+.stat-card h3{
+    color:#22c55e;
+    font-size:16px;
+    margin-bottom:10px;
+}
+
+.stat-card span{
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* =========================
+   BUTONLAR
+========================= */
+
+button{
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+/* =========================
+   KAYDIRMA ÇUBUĞU
+========================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#22c55e;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#16a34a;
+}
