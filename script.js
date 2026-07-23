@@ -56,81 +56,102 @@ const res = await fetch(
 const data = await res.json();
 
 
-alan.innerHTML="";
+alan.innerHTML = "";
 
 
-// TEST BEŞİKTAŞ MAÇI
+if(!data.response || data.response.length === 0){
 
 alan.innerHTML = `
 
 <div class="match-card">
 
-<div class="league">
-🏆 UEFA Avrupa Ligi
-</div>
-
-
-<div class="live-time">
-📅 Yaklaşan Maç
-</div>
-
-
-<div class="teams">
-
-
-<div class="team">
-
-<img src="https://media.api-sports.io/football/teams/549.png"
-class="team-logo">
-
-<span>
-Beşiktaş
-</span>
-
-</div>
-
-
-
-<div class="score">
-VS
-</div>
-
-
-
-<div class="team">
-
-<span>
-FC Midtjylland
-</span>
-
-</div>
-
-
-</div>
-
-
-<div class="country">
-
-🇹🇷 Türkiye - 🇩🇰 Danimarka
-
-</div>
-
-
-<div>
-🕒 21:00
-</div>
-
+<h3>
+📺 Şu anda canlı maç yok.
+</h3>
 
 </div>
 
 `;
 
+return;
+
+}
+
+
+data.response.forEach(mac=>{
+
+
+alan.innerHTML += `
+
+<div class="match-card">
+
+<div class="league">
+
+🏆 ${mac.league.name}
+
+</div>
+
+
+<div class="live-time">
+
+🔴 ${mac.fixture.status.elapsed || ""}'
+
+</div>
+
+
+<div class="teams">
+
+<div class="team">
+
+<img src="${mac.teams.home.logo}" class="team-logo">
+
+<span>${mac.teams.home.name}</span>
+
+</div>
+
+
+<div class="score">
+
+${mac.goals.home ?? 0}
+
+-
+
+${mac.goals.away ?? 0}
+
+</div>
+
+
+<div class="team">
+
+<img src="${mac.teams.away.logo}" class="team-logo">
+
+<span>${mac.teams.away.name}</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+`;
+
+});
+
 
 }catch(error){
 
-alan.innerHTML =
+console.log(error);
 
-"<div class='match'>❌ Veriler alınamadı.</div>";
+alan.innerHTML = `
+
+<div class="match-card">
+
+❌ Veriler alınamadı.
+
+</div>
+
+`;
 
 }
 
